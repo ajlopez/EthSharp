@@ -1,9 +1,10 @@
 ﻿namespace EthSharp.Vm
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
 
     public class DataWord
     {
@@ -22,5 +23,7 @@
         }
 
         public byte[] Data { get { return this.data; } }
+
+        public BigInteger Value { get { return new BigInteger(this.data.Reverse().ToArray()); } }
     }
 }
