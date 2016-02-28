@@ -2,6 +2,8 @@
 
 Ethereum-like Node in C#, WIP
 
+Inspired by [ethereumj](https://github.com/ethereum/ethereumj)
+
 ## References
 
 - [Ethereum Project](https://ethereum.org/)
