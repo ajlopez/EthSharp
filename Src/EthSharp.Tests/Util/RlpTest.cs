@@ -1,9 +1,9 @@
-﻿using System;
-using EthSharp.Util;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace EthSharp.Tests.Util
+﻿namespace EthSharp.Tests.Util
 {
+    using System;
+    using EthSharp.Util;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class RlpTest
     {
