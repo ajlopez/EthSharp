@@ -16,5 +16,18 @@
             Assert.AreEqual(1, result.Length);
             Assert.AreEqual(0x01, result[0]);
         }
+
+        [TestMethod]
+        public void EncodeSingleBytesAsOneByte()
+        {
+            for (int k = 0; k < 0x7f; k++)
+            {
+                var result = Rlp.EncodeByte((byte)k);
+
+                Assert.IsNotNull(result);
+                Assert.AreEqual(1, result.Length);
+                Assert.AreEqual((byte)k, result[0]);
+            }
+        }
     }
 }
