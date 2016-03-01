@@ -22,8 +22,20 @@ using System.Text;
             }
         }
 
+        public DataWord(byte[] bytes)
+        {
+            this.data = new byte[32];
+
+            Array.Copy(bytes, 0, this.data, 32 - bytes.Length, bytes.Length);
+        }
+
         public byte[] Data { get { return this.data; } }
 
         public BigInteger Value { get { return new BigInteger(this.data.Reverse().ToArray()); } }
+
+        public DataWord Add(DataWord dw)
+        {
+            return new DataWord(BigInteger.Add(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
+        }
     }
 }

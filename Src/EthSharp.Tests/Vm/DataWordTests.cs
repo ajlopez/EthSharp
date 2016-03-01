@@ -34,5 +34,16 @@
             Assert.IsNotNull(result);
             Assert.AreEqual(BigInteger.One, result);
         }
+
+        [TestMethod]
+        public void AddOneToOne()
+        {
+            var dw = new DataWord(1);
+
+            var result = dw.Add(dw).Value;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(new BigInteger(2), result);
+        }
     }
 }
