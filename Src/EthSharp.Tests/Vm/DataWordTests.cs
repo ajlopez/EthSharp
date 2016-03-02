@@ -45,5 +45,16 @@
             Assert.IsNotNull(result);
             Assert.AreEqual(new BigInteger(2), result);
         }
+
+        [TestMethod]
+        public void SubtractOneFromTwoOne()
+        {
+            var dw = new DataWord(2);
+
+            var result = dw.Subtract(new DataWord(1)).Value;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(BigInteger.One, result);
+        }
     }
 }
