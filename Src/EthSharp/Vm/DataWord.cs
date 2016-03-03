@@ -42,5 +42,10 @@ using System.Text;
         {
             return new DataWord(BigInteger.Subtract(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
         }
+
+        public DataWord Multiply(DataWord dw)
+        {
+            return new DataWord(BigInteger.Multiply(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
+        }
     }
 }

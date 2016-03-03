@@ -56,5 +56,16 @@
             Assert.IsNotNull(result);
             Assert.AreEqual(BigInteger.One, result);
         }
+
+        [TestMethod]
+        public void MultiplyTwoByThree()
+        {
+            var dw = new DataWord(2);
+
+            var result = dw.Multiply(new DataWord(3)).Value;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(new BigInteger(6), result);
+        }
     }
 }
