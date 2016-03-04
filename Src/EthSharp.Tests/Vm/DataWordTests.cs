@@ -67,5 +67,16 @@
             Assert.IsNotNull(result);
             Assert.AreEqual(new BigInteger(6), result);
         }
+
+        [TestMethod]
+        public void DivideSixIntoThree()
+        {
+            var dw = new DataWord(6);
+
+            var result = dw.Divide(new DataWord(3)).Value;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(new BigInteger(2), result);
+        }
     }
 }

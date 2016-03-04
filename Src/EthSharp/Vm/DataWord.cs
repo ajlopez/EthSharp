@@ -47,5 +47,10 @@ using System.Text;
         {
             return new DataWord(BigInteger.Multiply(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
         }
+
+        public DataWord Divide(DataWord dw)
+        {
+            return new DataWord(BigInteger.Divide(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
+        }
     }
 }
