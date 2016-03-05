@@ -11,5 +11,10 @@
         {
             return new byte[] { singleByte };
         }
+
+        public static byte[] EncodeBytes(byte[] bytes)
+        {
+            return new byte[] { 0x80 };
+        }
     }
 }

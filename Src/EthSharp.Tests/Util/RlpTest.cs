@@ -29,5 +29,15 @@
                 Assert.AreEqual((byte)k, result[0]);
             }
         }
+
+        [TestMethod]
+        public void EncodeNull()
+        {
+            var result = Rlp.EncodeBytes(null);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Length);
+            Assert.AreEqual(0x80, result[0]);
+        }
     }
 }
