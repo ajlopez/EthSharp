@@ -14,7 +14,10 @@
 
         public static byte[] EncodeBytes(byte[] bytes)
         {
-            return new byte[] { 0x80 };
+            if (bytes == null || bytes.Length == 0)
+                return new byte[] { 0x80 };
+
+            return bytes;
         }
     }
 }

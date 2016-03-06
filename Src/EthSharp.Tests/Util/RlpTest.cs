@@ -49,5 +49,15 @@
             Assert.AreEqual(1, result.Length);
             Assert.AreEqual(0x80, result[0]);
         }
+
+        [TestMethod]
+        public void EncodeArrayWithOneSimpleByte()
+        {
+            var result = Rlp.EncodeBytes(new byte[] { 0x01 });
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Length);
+            Assert.AreEqual(0x01, result[0]);
+        }
     }
 }
