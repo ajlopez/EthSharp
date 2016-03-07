@@ -11,7 +11,9 @@
 
         public static byte[] EncodeByte(byte singleByte) 
         {
-            return new byte[] { singleByte };
+            if ((singleByte & 0xff) <= 0x7f)
+                return new byte[] { singleByte };
+            return new byte[] { (byte)(OFFSET_SHORT_ITEM + 1), singleByte };
         }
 
         public static byte[] EncodeBytes(byte[] bytes)

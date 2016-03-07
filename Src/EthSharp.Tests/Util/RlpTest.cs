@@ -31,6 +31,20 @@
         }
 
         [TestMethod]
+        public void EncodeBytesAsTwoBytes()
+        {
+            for (int k = 0x80; k <= 0xff; k++)
+            {
+                var result = Rlp.EncodeByte((byte)k);
+
+                Assert.IsNotNull(result);
+                Assert.AreEqual(2, result.Length);
+                Assert.AreEqual(0x81, result[0]);
+                Assert.AreEqual((byte)k, result[1]);
+            }
+        }
+
+        [TestMethod]
         public void EncodeNull()
         {
             var result = Rlp.EncodeBytes(null);
