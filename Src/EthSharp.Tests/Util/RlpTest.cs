@@ -18,9 +18,19 @@
         }
 
         [TestMethod]
+        public void EncodeZeroByteAsOneByte()
+        {
+            var result = Rlp.EncodeByte(0x00);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Length);
+            Assert.AreEqual(0x80, result[0]);
+        }
+
+        [TestMethod]
         public void EncodeSingleBytesAsOneByte()
         {
-            for (int k = 0; k < 0x7f; k++)
+            for (int k = 1; k < 0x7f; k++)
             {
                 var result = Rlp.EncodeByte((byte)k);
 
