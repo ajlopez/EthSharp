@@ -7,6 +7,8 @@
 
     public class Rlp
     {
+        private static readonly int OFFSET_SHORT_ITEM = 0x80;
+
         public static byte[] EncodeByte(byte singleByte) 
         {
             return new byte[] { singleByte };
@@ -15,7 +17,7 @@
         public static byte[] EncodeBytes(byte[] bytes)
         {
             if (bytes == null || bytes.Length == 0)
-                return new byte[] { 0x80 };
+                return new byte[] { (byte)OFFSET_SHORT_ITEM };
 
             return bytes;
         }
