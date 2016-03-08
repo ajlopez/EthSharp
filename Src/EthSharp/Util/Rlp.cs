@@ -25,6 +25,9 @@
             if (bytes == null || bytes.Length == 0)
                 return new byte[] { (byte)OffsetShortItem };
 
+            if (bytes.Length == 1 && bytes[0] >= 0x80)
+                return new byte[] { (byte)(OffsetShortItem + 1), bytes[0] };
+
             return bytes;
         }
     }
