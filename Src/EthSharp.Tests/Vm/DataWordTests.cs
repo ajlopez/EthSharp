@@ -25,6 +25,20 @@
         }
 
         [TestMethod]
+        public void CreateDataWordUsingNegativeInteger()
+        {
+            var dw = new DataWord(-1);
+
+            var result = dw.Data;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(32, result.Length);
+
+            for (int k = 0; k < 32; k++)
+                Assert.AreEqual(0xff, result[k]);
+        }
+
+        [TestMethod]
         public void GetSmallIntegerAsBigInteger()
         {
             var dw = new DataWord(1);

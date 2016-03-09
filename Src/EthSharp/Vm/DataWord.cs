@@ -20,6 +20,10 @@ using System.Text;
                 this.data[k] = (byte)(value & 0x00ff);
                 value >>= 8;
             }
+
+            if (num < 0)
+                for (int k = 28; k-- > 0; )
+                    this.data[k] = (byte)0xff;
         }
 
         public DataWord(byte[] bytes)
