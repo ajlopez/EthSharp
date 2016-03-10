@@ -31,6 +31,10 @@ using System.Text;
             this.data = new byte[32];
 
             Array.Copy(bytes, 0, this.data, 32 - bytes.Length, bytes.Length);
+
+            if ((bytes[0] & 0x80) != 0)
+                for (int k = 0; k < 32 - bytes.Length; k++)
+                    this.data[k] = 0xff;
         }
 
         public DataWord(BigInteger value)
