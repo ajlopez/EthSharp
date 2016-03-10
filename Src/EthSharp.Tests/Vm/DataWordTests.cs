@@ -64,7 +64,6 @@
             var result = dw.Negate();
 
             Assert.IsNotNull(result);
-            BigInteger v = result.Value;
             Assert.AreEqual(new DataWord(-3), result);
         }
 
