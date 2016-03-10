@@ -33,9 +33,19 @@ using System.Text;
             Array.Copy(bytes, 0, this.data, 32 - bytes.Length, bytes.Length);
         }
 
+        public DataWord(BigInteger value)
+            : this(value.ToByteArray().Reverse().ToArray())
+        {
+        }
+
         public byte[] Data { get { return this.data; } }
 
         public BigInteger Value { get { return new BigInteger(this.data.Reverse().ToArray()); } }
+
+        public DataWord Negate()
+        {
+            return new DataWord(BigInteger.Negate(this.Value).ToByteArray().Reverse().ToArray());
+        }
 
         public DataWord Add(DataWord dw)
         {
@@ -55,6 +65,22 @@ using System.Text;
         public DataWord Divide(DataWord dw)
         {
             return new DataWord(BigInteger.Divide(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Value.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (!(obj is DataWord))
+                return false;
+
+            return this.Value.Equals(((DataWord)obj).Value);
         }
     }
 }

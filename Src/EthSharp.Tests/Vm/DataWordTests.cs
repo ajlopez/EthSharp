@@ -39,6 +39,35 @@
         }
 
         [TestMethod]
+        public void Equals()
+        {
+            var dw1 = new DataWord(1);
+            var dw2 = new DataWord(2);
+            var dw1b = new DataWord(1);
+
+            Assert.AreEqual(dw1, dw1);
+            Assert.AreEqual(dw1, dw1b);
+            Assert.AreEqual(dw1b, dw1);
+            Assert.AreNotEqual(dw1, null);
+            Assert.AreNotEqual(dw1, "foo");
+            Assert.AreNotEqual(dw1, 42);
+            Assert.AreNotEqual(dw1, dw2);
+
+            Assert.AreEqual(dw1.GetHashCode(), dw1b.GetHashCode());
+        }
+
+        [TestMethod]
+        public void NegatePositiveInteger()
+        {
+            var dw = new DataWord(3);
+
+            var result = dw.Negate();
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(new DataWord(-3), result);
+        }
+
+        [TestMethod]
         public void GetSmallIntegerAsBigInteger()
         {
             var dw = new DataWord(1);
