@@ -44,27 +44,27 @@ using System.Text;
 
         public DataWord Negate()
         {
-            return new DataWord(BigInteger.Negate(this.Value).ToByteArray().Reverse().ToArray());
+            return new DataWord(BigInteger.Negate(this.Value));
         }
 
         public DataWord Add(DataWord dw)
         {
-            return new DataWord(BigInteger.Add(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
+            return new DataWord(BigInteger.Add(this.Value, dw.Value));
         }
 
         public DataWord Subtract(DataWord dw)
         {
-            return new DataWord(BigInteger.Subtract(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
+            return new DataWord(BigInteger.Subtract(this.Value, dw.Value));
         }
 
         public DataWord Multiply(DataWord dw)
         {
-            return new DataWord(BigInteger.Multiply(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
+            return new DataWord(BigInteger.Multiply(this.Value, dw.Value));
         }
 
         public DataWord Divide(DataWord dw)
         {
-            return new DataWord(BigInteger.Divide(this.Value, dw.Value).ToByteArray().Reverse().ToArray());
+            return new DataWord(BigInteger.Divide(this.Value, dw.Value));
         }
 
         public override int GetHashCode()
