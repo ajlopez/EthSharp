@@ -98,6 +98,20 @@
         }
 
         [TestMethod]
+        public void EncodeArrayWithTwoLowBytes()
+        {
+            for (int k = 0; k <= 0x7f; k++)
+            {
+                var result = Rlp.EncodeBytes(new byte[] { (byte)k, (byte)k });
+
+                Assert.IsNotNull(result);
+                Assert.AreEqual(2, result.Length);
+                Assert.AreEqual((byte)k, result[0]);
+                Assert.AreEqual((byte)k, result[1]);
+            }
+        }
+
+        [TestMethod]
         public void EncodeArrayWithHighByte()
         {
             for (int k = 0x80; k <= 0xff; k++)

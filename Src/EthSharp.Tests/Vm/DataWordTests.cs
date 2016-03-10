@@ -48,6 +48,9 @@
             Assert.AreEqual(dw1, dw1);
             Assert.AreEqual(dw1, dw1b);
             Assert.AreEqual(dw1b, dw1);
+
+            Assert.IsFalse(dw1.Equals(null));
+
             Assert.AreNotEqual(dw1, null);
             Assert.AreNotEqual(dw1, "foo");
             Assert.AreNotEqual(dw1, 42);
