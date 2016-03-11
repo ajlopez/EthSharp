@@ -93,7 +93,19 @@
         }
 
         [TestMethod]
-        public void SubtractOneFromTwoOne()
+        public void AddOneToMinusOne()
+        {
+            var dw = new DataWord(1);
+            var dw2 = new DataWord(-1);
+
+            var result = dw.Add(dw2).Value;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(BigInteger.Zero, result);
+        }
+
+        [TestMethod]
+        public void SubtractOneFromTwo()
         {
             var dw = new DataWord(2);
 
@@ -101,6 +113,17 @@
 
             Assert.IsNotNull(result);
             Assert.AreEqual(BigInteger.One, result);
+        }
+
+        [TestMethod]
+        public void SubtractMinusOneFromTwo()
+        {
+            var dw = new DataWord(2);
+
+            var result = dw.Subtract(new DataWord(-1)).Value;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(new BigInteger(3), result);
         }
 
         [TestMethod]
