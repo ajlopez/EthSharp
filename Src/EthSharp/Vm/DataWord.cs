@@ -15,14 +15,14 @@ using System.Text;
             this.data = new byte[32];
             int value = num;
 
-            for (int k = 31; k >= 28; k--)
+            for (int k = 0; k < 4; k++)
             {
                 this.data[k] = (byte)(value & 0x00ff);
                 value >>= 8;
             }
 
             if (num < 0)
-                for (int k = 28; k-- > 0; )
+                for (int k = 4; k < 32; k++)
                     this.data[k] = (byte)0xff;
         }
 
@@ -30,21 +30,33 @@ using System.Text;
         {
             this.data = new byte[32];
 
-            Array.Copy(bytes, 0, this.data, 32 - bytes.Length, bytes.Length);
+            for (int k = 0; k < bytes.Length; k++)
+                this.data[k] = bytes[bytes.Length - k - 1];
 
             if ((bytes[0] & 0x80) != 0)
-                for (int k = 0; k < 32 - bytes.Length; k++)
+                for (int k = bytes.Length; k < 32; k++)
+                    this.data[k] = 0xff;
+        }
+
+        private DataWord(byte[] bytes, bool inverse)
+        {
+            this.data = new byte[32];
+
+            Array.Copy(bytes, 0, this.data, 0, bytes.Length);
+
+            if ((bytes[bytes.Length - 1] & 0x80) != 0)
+                for (int k = bytes.Length; k < 32; k++)
                     this.data[k] = 0xff;
         }
 
         public DataWord(BigInteger value)
-            : this(value.ToByteArray().Reverse().ToArray())
+            : this(value.ToByteArray(), true)
         {
         }
 
-        public byte[] Data { get { return this.data; } }
+        public byte[] Data { get { return this.data.Reverse().ToArray(); } }
 
-        public BigInteger Value { get { return new BigInteger(this.data.Reverse().ToArray()); } }
+        public BigInteger Value { get { return new BigInteger(this.data); } }
 
         public DataWord Negate()
         {
