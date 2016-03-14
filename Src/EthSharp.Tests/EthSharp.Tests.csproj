@@ -46,7 +46,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\UnitTest1.cs" />
+    <Compile Include="Core\BlockchainTests.cs" />
+    <Compile Include="Core\BlockTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\HexTests.cs" />
     <Compile Include="Util\RlpTests.cs" />
