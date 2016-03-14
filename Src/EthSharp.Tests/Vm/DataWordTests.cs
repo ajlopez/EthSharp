@@ -25,6 +25,22 @@
         }
 
         [TestMethod]
+        public void CreateDataWordUsingBytes()
+        {
+            var dw = new DataWord(new byte[] { 0x01, 0x02 });
+
+            Assert.AreEqual(new BigInteger(258), dw.Value);
+        }
+
+        [TestMethod]
+        public void CreateNegativeDataWordUsingBytes()
+        {
+            var dw = new DataWord(new byte[] { 0xff, 0xff });
+
+            Assert.AreEqual(new BigInteger(-1), dw.Value);
+        }
+
+        [TestMethod]
         public void CreateDataWordUsingNegativeInteger()
         {
             var dw = new DataWord(-1);
