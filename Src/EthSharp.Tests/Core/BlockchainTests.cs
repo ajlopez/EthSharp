@@ -18,5 +18,18 @@
 
             Assert.AreEqual(0, blockchain.BestBlockNumber);
         }
+
+        [TestMethod]
+        public void AddBlock()
+        {
+            Block block = new Block(0);
+            Block block1 = new Block(1);
+
+            Blockchain blockchain = new Blockchain(block);
+
+            blockchain.Add(block1);
+
+            Assert.AreEqual(1, blockchain.BestBlockNumber);
+        }
     }
 }

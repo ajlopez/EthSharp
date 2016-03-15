@@ -7,13 +7,18 @@
 
     public class Blockchain
     {
-        private Block block;
+        private IList<Block> blocks = new List<Block>();
 
         public Blockchain(Block block)
         {
-            this.block = block;
+            this.blocks.Add(block);
         }
 
-        public long BestBlockNumber { get { return this.block.Number; } }
+        public long BestBlockNumber { get { return this.blocks.Last().Number; } }
+
+        public void Add(Block block)
+        {
+            this.blocks.Add(block);
+        }
     }
 }
