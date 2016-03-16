@@ -18,6 +18,9 @@
 
         public void Add(Block block)
         {
+            if (this.BestBlockNumber == block.Number)
+                throw new InvalidOperationException("Rejected block");
+
             this.blocks.Add(block);
         }
     }
