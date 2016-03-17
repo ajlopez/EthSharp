@@ -51,5 +51,25 @@
                 Assert.AreEqual("Rejected block", ex.Message);
             }
         }
+
+        [TestMethod]
+        public void RejectBlockWithTooMuchGreaterNumber()
+        {
+            Block block = new Block(0);
+            Block block1 = new Block(2);
+
+            Blockchain blockchain = new Blockchain(block);
+
+            try
+            {
+                blockchain.Add(block1);
+                Assert.Fail();
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(InvalidOperationException));
+                Assert.AreEqual("Rejected block", ex.Message);
+            }
+        }
     }
 }

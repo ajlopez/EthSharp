@@ -18,7 +18,7 @@
 
         public void Add(Block block)
         {
-            if (this.BestBlockNumber == block.Number)
+            if (this.BestBlockNumber != block.Number - 1)
                 throw new InvalidOperationException("Rejected block");
 
             this.blocks.Add(block);
